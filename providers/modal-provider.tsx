@@ -1,0 +1,27 @@
+"use client"
+
+// Global Imports
+import { useEffect, useState } from "react";
+
+// Local Imports
+import { StoreModal } from "@/components/modals/store-modal";
+
+
+export const ModalProvider = () => {
+    const [isMounted, setIsMounted] = useState(false);
+
+    // Avoid Hydration Error in Server/Client side rendering
+    useEffect( () => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) {
+        return null;
+    }
+
+    return (
+        <>
+            <StoreModal/>
+        </>
+    );
+};
