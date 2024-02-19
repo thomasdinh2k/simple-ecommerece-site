@@ -1,6 +1,10 @@
 "use client";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useStoreModal } from "@/hooks/use-store-modal";
 import { Modal } from "@/components/ui/modal";
@@ -24,6 +28,8 @@ const formSchema = z.object({
 export const StoreModal = () => {
 	const storeModal = useStoreModal();
 
+	const [loading, setLoading] = useState(false);
+
 	// 1. Define a Form
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -34,8 +40,20 @@ export const StoreModal = () => {
 
 	// 2. Define a submit handler
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
-		console.log(values);
-		//TODO : Create Store
+		try {
+			setLoading(true);
+
+			// Attempt to create new store
+			const response = await axios.post('/api/stores', values);
+
+			console.log(response.data)
+			toast.success("Tạo thành công!");
+		} catch (error) {
+			// Handle Error
+			toast.error("Đã xảy ra lỗi, vui lòng liên hệ IT");
+		} finally {
+			setLoading(false);
+		}
 	};
 
 	return (
@@ -58,7 +76,9 @@ export const StoreModal = () => {
 										<FormControl>
 											<Input
 												placeholder="Nhập tên cửa hàng..."
-												{...field}></Input>
+												disabled={loading}
+												{...field}>
+											</Input>
 										</FormControl>
 										<FormDescription>Nhập tối đa 50 ký tự...</FormDescription>
                                         <FormMessage/>
@@ -66,10 +86,10 @@ export const StoreModal = () => {
 								)}
 							/>
 							<div className="pt-6 space-x-2 flex items-center justify-end w-full">
-								<Button variant="outline" onClick={storeModal.onClose}>
+								<Button variant="outline" onClick={storeModal.onClose} disabled={loading}>
 									Cancel
 								</Button>
-								<Button type="submit">Continue</Button>
+								<Button type="submit" disabled={loading}>Continue</Button>
 							</div>
 						</form>
 					</Form>
