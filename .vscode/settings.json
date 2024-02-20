@@ -104,7 +104,7 @@
 	"workbench.tree.renderIndentGuides": "always",
 	"workbench.view.alwaysShowHeaderActions": true,
 
-	"breadcrumbs.enabled": false,
+	"breadcrumbs.enabled": true,
 	"breadcrumbs.filePath": "off",
 
 	"editor.multiCursorModifier": "ctrlCmd",
@@ -209,7 +209,7 @@
 		],
 
 		"[One Dark Pro]": {
-			"comments": "#e8eb5290",
+			"comments": "#e8eb5290"
 		}
 	}
 }
