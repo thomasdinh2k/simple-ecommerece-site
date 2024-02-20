@@ -46,8 +46,13 @@ export const StoreModal = () => {
 			// Attempt to create new store
 			const response = await axios.post('/api/stores', values);
 
+			/* This will do complete refresh on the page
+			=> the store after refresh will be loaded to the database 100%, preventing from the database hasn't load before view open
+			*/
+			window.location.assign(`/${response.data.id}`)
+
 			console.log(response.data)
-			toast.success("Tạo thành công!");
+			toast.success(`Tạo thành công! ${response.data.id}`);
 		} catch (error) {
 			// Handle Error
 			toast.error("Đã xảy ra lỗi, vui lòng liên hệ IT");
