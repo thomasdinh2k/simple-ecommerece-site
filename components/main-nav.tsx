@@ -12,6 +12,11 @@ export function MainNav({
     const params = useParams();
     const routes = [
         {
+            href: `/${params.storeId}/`,
+            label: 'Trang tổng quan',
+            active: pathname === `/${params.storeId}/`,
+        },
+        {
             href: `/${params.storeId}/settings`,
             label: 'Cài đặt',
             active: pathname === `/${params.storeId}/settings`,

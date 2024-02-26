@@ -69,7 +69,7 @@
 	"zenMode.hideLineNumbers": false,
 	"zenMode.hideActivityBar": false,
 	"editor.accessibilitySupport": "off",
-	"workbench.colorTheme": "Quiet Light",
+	"workbench.colorTheme": "One Dark Pro",
 	"livePreview.autoRefreshPreview": "On Changes to Saved Files",
 	"cSpell.language": "en,vi,lorem",
 	"editor.formatOnSave": true,
