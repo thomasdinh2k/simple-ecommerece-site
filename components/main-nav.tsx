@@ -17,6 +17,11 @@ export function MainNav({
             active: pathname === `/${params.storeId}/`,
         },
         {
+            href: `/${params.storeId}/billboards`,
+            label: 'Bảng Billboard',
+            active: pathname === `/${params.storeId}/billboards`,
+        },
+        {
             href: `/${params.storeId}/settings`,
             label: 'Cài đặt',
             active: pathname === `/${params.storeId}/settings`,
