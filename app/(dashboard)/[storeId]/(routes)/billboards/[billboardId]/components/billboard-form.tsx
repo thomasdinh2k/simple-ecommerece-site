@@ -49,7 +49,7 @@ export const BillboardForm: React.FC<SettingsFormProps> = ({ initialData }) => {
 		? "Chỉnh Sửa Billboard này"
 		: "Tạo một Billboard mới";
 	const toastMessage = initialData
-		? "Đã cập nhật Billboard."
+		? "Đã cập nhật Billboard"
 		: "Billboard đã được tạo mới.";
 	const action = initialData ? "Lưu thay đổi" : "Tạo mới";
 
@@ -71,7 +71,7 @@ export const BillboardForm: React.FC<SettingsFormProps> = ({ initialData }) => {
 			}
 			// await axios.post(`/api/stores/${params.storeId}/billboards`, data);
 			router.refresh(); //Re-sync server component
-			router.push(`/api/${params.storeId}/billboards`)
+			router.push(`/${params.storeId}/billboards`)
 			toast.success(toastMessage);
 		} catch (error) {
 			toast.error("Đã có lỗi gì đó xảy ra");
@@ -85,7 +85,7 @@ export const BillboardForm: React.FC<SettingsFormProps> = ({ initialData }) => {
 			setLoading(true);
 			await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`);
 			router.refresh();
-			router.push("/");
+			router.push(`/${params.storeId}/billboards`);
 			toast.success("Billboard đã được xóa");
 		} catch (error) {
 			toast.error(
@@ -165,7 +165,6 @@ export const BillboardForm: React.FC<SettingsFormProps> = ({ initialData }) => {
 					</Button>
 				</form>
 			</Form>
-			<Separator />
 		</>
 	);
 };
