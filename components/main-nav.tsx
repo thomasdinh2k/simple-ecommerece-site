@@ -22,6 +22,11 @@ export function MainNav({
             active: pathname === `/${params.storeId}/billboards`,
         },
         {
+            href: `/${params.storeId}/categories`,
+            label: 'Danh mục sản phẩm',
+            active: pathname === `/${params.storeId}/categories`,
+        },
+        {
             href: `/${params.storeId}/settings`,
             label: 'Cài đặt',
             active: pathname === `/${params.storeId}/settings`,

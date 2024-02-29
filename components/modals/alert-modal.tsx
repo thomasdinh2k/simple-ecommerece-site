@@ -30,7 +30,7 @@ export const AlertModal: React.FC<AlertModalProps> = ({
 	return (
 		<Modal
 			title="Bạn chắc chứ?"
-			description="Không thể phục hồi shop nếu đã xóa"
+			description="Không thể phục hồi nếu đã xóa"
 			isOpen={isOpen}
 			onClose={onClose}
         >
