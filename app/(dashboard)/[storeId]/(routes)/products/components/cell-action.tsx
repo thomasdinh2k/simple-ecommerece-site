@@ -8,7 +8,7 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { SizeColumn } from "./columns";
+import { ProductColumn } from "./columns";
 import { Button } from "@/components/ui/button";
 import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
@@ -16,7 +16,7 @@ import { useState } from "react";
 import { AlertModal } from "@/components/modals/alert-modal";
 
 interface CellActionProps {
-	data: SizeColumn;
+	data: ProductColumn;
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -27,7 +27,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 		navigator.clipboard.writeText(id);
 		toast.success(
 			<div>
-				Đường dẫn của <span style={{ fontStyle: "italic" }}> Size </span>{" "}
+				Đường dẫn của <span style={{ fontStyle: "italic" }}>Product </span>{" "}
 				<strong>{id}</strong> đã được đưa vào clipboard
 			</div>
 		);
@@ -36,12 +36,12 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 	async function onConfirm() {
 		try {
 			setLoading(true);
-			await axios.delete(`/api/${params.storeId}/sizes/${data.id}`);
-			toast.success("Kích cỡ đó đã được xóa");
+			await axios.delete(`/api/${params.storeId}/products/${data.id}`);
+			toast.success("Sản phẩm này đã được xóa");
 			router.refresh();
 		} catch (error) {
 			toast.error(
-				"Chắc chắn rằng bạn đã xóa bỏ hết sản phẩm của Size này trước!"
+				'Đã có lỗi xảy ra!'
 			);
 		} finally {
 			setLoading(false);
@@ -73,7 +73,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 					<DropdownMenuItem
 						onClick={() =>
 							router.push(`
-	                    /${params.storeId}/sizes/${data.id}
+	                    /${params.storeId}/products/${data.id}
 	                `)
 						}>
 						<Edit className="mr-2 h-4 w-4" />

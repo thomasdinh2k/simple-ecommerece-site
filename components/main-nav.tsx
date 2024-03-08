@@ -23,7 +23,7 @@ export function MainNav({
         },
         {
             href: `/${params.storeId}/categories`,
-            label: 'Danh mục sản phẩm',
+            label: 'Danh mục SP',
             active: pathname === `/${params.storeId}/categories`,
         },
         {
@@ -35,6 +35,11 @@ export function MainNav({
             href: `/${params.storeId}/colors`,
             label: 'Màu sắc',
             active: pathname === `/${params.storeId}/colors`,
+        },
+        {
+            href: `/${params.storeId}/products`,
+            label: 'Sản phẩm',
+            active: pathname === `/${params.storeId}/products`,
         },
         {
             href: `/${params.storeId}/settings`,
